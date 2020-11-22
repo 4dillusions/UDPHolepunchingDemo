@@ -14,7 +14,7 @@ How to use it
 <ul>
 <li>Run Server executable on the server what has public IP</li>
 <li>Run Client executable on two remote client machines</li>
-<li>Wnter server address on clients</li>
+<li>Enter server address on clients</li>
 <li>The server send IPs for clients</li>
 <li>Two clients communicate each other</li>
 </ul>
