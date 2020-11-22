@@ -1,6 +1,6 @@
 UDP Holepunching demo
 ===================
-[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=XKSSozKlYJM)
+[![Alt text](https://img.youtube.com/vi/XKSSozKlYJM/0.jpg)](https://www.youtube.com/watch?v=XKSSozKlYJM)
 
 Its a P2P UDP communication demo uses hole punching technology written in C++. It's working between remote machines behind the NAT or something like this. You need an address/port "share" server with public IP (there are free VPS machines, for example Google VPS) for hole punching.
 
