@@ -12,7 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 using namespace Network;
 
-void main()
+int main()
 {
 	Net::Init();
 
@@ -20,7 +20,7 @@ void main()
 	SocketAddress anyAddress(PortNumber);
 	socket->Bind(anyAddress);
 	SocketAddress clientFirstAdress{}, clientSecondAddress{};
-	
+
 	//cout << "STUN server public address: " << SocketAddress::GetLocalIp() << ":" << PortNumber << endl;
 
 	MessageHelper::ReceiveFromRemoteMachine(socket, clientFirstAdress);
@@ -33,4 +33,6 @@ void main()
 	Net::Cleanup();
 	cout << "Hole punching was finished! You may turn off the STUN server.\n";
 	PauseProgram();
+
+	return 0;
 }

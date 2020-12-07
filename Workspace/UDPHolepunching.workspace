@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="Framework/Framework.cbp" />
+		<Project filename="Client/Client.cbp" />
+		<Project filename="Server/Server.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
+

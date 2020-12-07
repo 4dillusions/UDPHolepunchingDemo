@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1607303543 source:/home/robi/Practise/UDPHolepunchingDemo/Source/Client/Main.cpp
+	"NetworkSystem.h"
+	"Net.h"
+	"UDPSocket.h"
+	"SocketAddress.h"
+	"MessageHelper.h"
+	"IpV4Address.h"
+	<thread>
+
+1607301740 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/NetworkSystem.h
+	"Windows.h"
+	"WinSock2.h"
+	"WS2tcpip.h"
+	<sys/socket.h>
+	<netinet/in.h>
+	<sys/types.h>
+	<netdb.h>
+	<cerrno>
+	<fcntl.h>
+	<unistd.h>
+	<arpa/inet.h>
+	<linux/in.h>
+	<string.h>
+	<iostream>
+	<vector>
+	<string>
+
+1607281630 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/Net.h
+
+1607281630 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/UDPSocket.h
+	"NetworkSystem.h"
+
+1607281630 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/SocketAddress.h
+	"NetworkSystem.h"
+
+1607281630 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/MessageHelper.h
+	<string>
+
+1607281630 /home/robi/Practise/UDPHolepunchingDemo/Source/Framework/IpV4Address.h
+	"NetworkSystem.h"
+

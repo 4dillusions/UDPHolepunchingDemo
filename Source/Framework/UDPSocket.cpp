@@ -13,21 +13,21 @@ namespace Network
 	UDPSocket::UDPSocket()
 	{
 		udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
-		
+
 		if (udpSocket == INVALID_SOCKET)
 			cout << "[ERROR] Can't create UDPSocket!\n";
 		else
 			cout << "OK - create UDPSocket\n";
 	}
-	
+
 	UDPSocket::UDPSocket(SOCKET udpSocket) : udpSocket{ udpSocket }
 	{ }
-	
+
 	UDPSocket::~UDPSocket()
 	{
 		SocketClose(udpSocket);
 	}
-	
+
 	void UDPSocket::Bind(SocketAddress& toAddress) const
 	{
 		if (bind(udpSocket, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in)) == SOCKET_ERROR)
@@ -35,7 +35,7 @@ namespace Network
 		else
 			cout << "OK - bind UDP socket\n";
 	}
-	
+
 	int UDPSocket::SendTo(const char* message, int messageLenght, SocketAddress& toAddress) const
 	{
 		return sendto(udpSocket, message, messageLenght, 0, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in));
@@ -47,7 +47,7 @@ namespace Network
 		string ipStr = string(localAddress.GetIp());
 		IpV4Address ip(ipStr);
 		const int localIpAddr4 = ip.addr4;
-		
+
 		for (int ipAddr4 = 0; ipAddr4 < 255; ipAddr4++)
 		{
 			ip.addr4 = ipAddr4;
@@ -61,22 +61,22 @@ namespace Network
 
 		return 0;
 	}
-	
+
 	int UDPSocket::ReceiveFrom(char* messageOut, int messageLenght, SocketAddress& fromAddressOut) const
 	{
 		socklen_t fromLenght = sizeof(sockaddr_in);
 		return recvfrom(udpSocket, messageOut, messageLenght, 0, reinterpret_cast<sockaddr*>(fromAddressOut.GetSockAddress()), &fromLenght);
 	}
-	
+
 	void UDPSocket::SetNonBlocking() const
 	{
 		#ifdef _WIN64
 			u_long arg = 1;
 			ioctlsocket(udpSocket, FIONBIO, &arg);
 		#else
-			int flags = fcntl(socket, F_GETFL, 0);
+			int flags = fcntl(udpSocket, F_GETFL, 0);
 			flags = flags | O_NONBLOCK;
-			fcntl(socket, F_SETFL, flags);
+			fcntl(udpSocket, F_SETFL, flags);
 		#endif
 	}
 

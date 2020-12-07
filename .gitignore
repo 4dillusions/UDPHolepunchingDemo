@@ -3,3 +3,6 @@ html/
 .history/
 .metadata/
 .vs/
+obj/
+Debug/
+Release/

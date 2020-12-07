@@ -28,6 +28,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 	#include <unistd.h>
 	#include <arpa/inet.h>
 	#include <linux/in.h>
+	#include <string.h>
 
 	typedef int SOCKET;
 	const int NO_ERROR = 0;

@@ -14,7 +14,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 using namespace Network;
 
-void main()
+int main()
 {
 	Net::Init();
 
@@ -26,7 +26,7 @@ void main()
 	//cout << "Client local IP: " << SocketAddress::GetLocalIp() << endl;
 
 	MessageHelper::SendToRemoteMachine(socket, stunServerAddress, "Hello server!");
-	
+
 	const string serverMessage = MessageHelper::ReceiveFromRemoteMachine(socket);
 	auto remoteMachineIpAndPort = SplitString(serverMessage, ':');
 	SocketAddress remoteMachineAddress(std::atoi(remoteMachineIpAndPort[1].c_str()), IpV4Address{ remoteMachineIpAndPort[0] });
@@ -37,9 +37,11 @@ void main()
 		MessageHelper::ReceiveFromRemoteMachine(socket);
 		std::this_thread::sleep_for(1s);
 	}
-	
+
 	delete socket;
 	Net::Cleanup();
 
 	PauseProgram();
+
+	return 0;
 }
