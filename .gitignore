@@ -6,3 +6,4 @@ html/
 obj/
 Debug/
 Release/
+*.depend
