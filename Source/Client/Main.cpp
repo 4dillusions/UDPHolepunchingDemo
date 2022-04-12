@@ -14,7 +14,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 using namespace Network;
 
-int main()
+void StunClient()
 {
 	Net::Init();
 
@@ -40,7 +40,44 @@ int main()
 
 	delete socket;
 	Net::Cleanup();
+}
 
+void UDPReceiver()
+{
+	Net::Init();
+
+	const int port = 24000;
+	const int MessageByteBufferSize = 1024;
+	char messageByteBuffer[MessageByteBufferSize];
+
+	const auto receiverSocket = new UDPSocket;
+	receiverSocket->SetNonBlocking();
+	receiverSocket->BindAny(port);
+
+	while (true)
+	{
+		memset(messageByteBuffer, 0, MessageByteBufferSize);
+		SocketAddress senderAddress{};
+		const int receiverRes = receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, senderAddress);
+		if (receiverRes > 10)
+		{
+			cout << "local IP: " << SocketAddress::GetLocalIp() << endl;
+			cout << "sender IP: " << senderAddress.GetIp() << endl;
+			cout << "sender message: " << string(messageByteBuffer) << endl;
+		}
+
+		std::this_thread::sleep_for(1s);
+	}
+
+	delete receiverSocket;
+	Net::Cleanup();
+}
+
+int main()
+{
+	StunClient();
+	//UDPReceiver();
+	
 	PauseProgram();
 
 	return 0;

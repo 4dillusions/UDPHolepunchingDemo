@@ -26,6 +26,7 @@ namespace Network
 		UDPSocket& operator=(UDPSocket&&) = delete;
 	
 		void Bind(SocketAddress& toAddress) const;
+		void BindAny(unsigned short int port = 0) const;
 		int SendTo(const char* message, int messageLenght, SocketAddress& toAddress) const;
 		int SendToAll(const char* message, int messageLenght, SocketAddress& localAddress) const;
 		int ReceiveFrom(char* messageOut, int messageLenght, SocketAddress& fromAddressOut) const;

@@ -36,6 +36,12 @@ namespace Network
 			cout << "OK - bind UDP socket\n";
 	}
 
+	void UDPSocket::BindAny(unsigned short int port) const
+	{
+		SocketAddress anyAddress(port);
+		Bind(anyAddress);
+	}
+
 	int UDPSocket::SendTo(const char* message, int messageLenght, SocketAddress& toAddress) const
 	{
 		return sendto(udpSocket, message, messageLenght, 0, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in));
@@ -44,22 +50,28 @@ namespace Network
 	int UDPSocket::SendToAll(const char* message, int messageLenght, SocketAddress& localAddress) const
 	{
 		const unsigned short int port = std::stoi(localAddress.GetPort());
+
+		//doesn't work on all networks
+		/*string ipStr = string(localAddress.GetIp());
+		IpV4Address ip(ipStr);
+		ip.addr4 = 255;
+		SocketAddress address(port, ip);
+
+		return SendTo(message, messageLenght, address);*/
+
 		string ipStr = string(localAddress.GetIp());
 		IpV4Address ip(ipStr);
 		const int localIpAddr4 = ip.addr4;
 
+		int result{};
 		for (int ipAddr4 = 0; ipAddr4 < 255; ipAddr4++)
 		{
 			ip.addr4 = ipAddr4;
-
-			if (ipAddr4 != localIpAddr4)
-			{
-				SocketAddress address(port, ip);
-				SendTo(message, messageLenght, address);
-			}
+			SocketAddress address(port, ip);
+			result = SendTo(message, messageLenght, address);
 		}
 
-		return 0;
+		return result;
 	}
 
 	int UDPSocket::ReceiveFrom(char* messageOut, int messageLenght, SocketAddress& fromAddressOut) const

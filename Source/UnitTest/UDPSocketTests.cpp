@@ -32,9 +32,10 @@ namespace UnitTest
 
 			const auto receiverSocket = new UDPSocket;
 			receiverSocket->SetNonBlocking();
-			receiverSocket->Bind(localAddress);
+			receiverSocket->BindAny(port);
 
 			const auto senderSocket = new UDPSocket;
+			senderSocket->BindAny();
 
 			if (isToAll)
 			{
@@ -46,12 +47,10 @@ namespace UnitTest
 				senderSocket->SendTo(Message.c_str(), static_cast<int>(Message.length()), localAddress);
 
 			memset(messageByteBuffer, 0, MessageByteBufferSize);
-			receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, localAddress);
+			SocketAddress senderAddress{};
+			receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, senderAddress);
 
-			if (isToAll)
-				Assert::IsTrue(string(messageByteBuffer) != Message);
-			else
-				Assert::IsTrue(string(messageByteBuffer) == Message);
+			Assert::IsTrue(string(messageByteBuffer) == Message);
 
 			delete receiverSocket;
 			delete senderSocket;

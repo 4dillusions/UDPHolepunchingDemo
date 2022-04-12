@@ -93,7 +93,8 @@ namespace Network
 			char host[256];
 			gethostname(host, sizeof host);
 			struct hostent* host_entry = gethostbyname(host);
-			char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(host_entry->h_addr_list[1]));
+			auto addrList = (host_entry->h_addr_list[1] != nullptr) ? host_entry->h_addr_list[1] : host_entry->h_addr_list[0];
+			char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(addrList));
 
 			return string(result);
 		#else
