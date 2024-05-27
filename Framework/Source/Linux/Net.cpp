@@ -4,8 +4,15 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "CppUnitTest.h"
+#include "../Net.h"
 
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+namespace Network
+{
+	bool Net::Init()
+	{
+		return true;
+	}
 
-#pragma comment (lib, "ws2_32.lib")
+	void Net::Cleanup()
+	{ }
+}

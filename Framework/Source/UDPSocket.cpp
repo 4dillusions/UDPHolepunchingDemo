@@ -79,27 +79,4 @@ namespace Network
 		socklen_t fromLenght = sizeof(sockaddr_in);
 		return recvfrom(udpSocket, messageOut, messageLenght, 0, reinterpret_cast<sockaddr*>(fromAddressOut.GetSockAddress()), &fromLenght);
 	}
-
-	void UDPSocket::SetNonBlocking() const
-	{
-		#ifdef _WIN64
-			u_long arg = 1;
-			ioctlsocket(udpSocket, FIONBIO, &arg);
-		#else
-			int flags = fcntl(udpSocket, F_GETFL, 0);
-			flags = flags | O_NONBLOCK;
-			fcntl(udpSocket, F_SETFL, flags);
-		#endif
-	}
-
-	// ReSharper disable CppMemberFunctionMayBeStatic
-	void UDPSocket::SocketClose(SOCKET socket)
-	// ReSharper restore CppMemberFunctionMayBeStatic
-	{
-		#ifdef _WIN64
-			closesocket(socket);
-		#else
-			close(socket);
-		#endif
-	}
 }

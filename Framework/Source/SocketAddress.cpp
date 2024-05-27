@@ -87,46 +87,6 @@ namespace Network
 		return string(str);
 	}
 
-	string SocketAddress::GetLocalIp()
-	{
-		#ifdef _WIN64
-			char host[256];
-			gethostname(host, sizeof host);
-			struct hostent* host_entry = gethostbyname(host);
-			auto addrList = (host_entry->h_addr_list[1] != nullptr) ? host_entry->h_addr_list[1] : host_entry->h_addr_list[0];
-			char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(addrList));
-
-			return string(result);
-		#else
-			setenv("LANG", "C", 1);
-
-			FILE* fp = popen("ip -f inet addr show", "r");
-			if (fp)
-			{
-				char* ip = nullptr, * delimiter;
-				size_t count;
-				while ((getline(&ip, &count, fp) > 0) && ip)
-				{
-					if ((ip = strstr(ip, "inet ")))
-					{
-						ip += 5;
-						if ((delimiter = strchr(ip, '/')))
-						{
-							*delimiter = '\0';
-
-							string result(ip);
-							if (result != string("127.0.0.1"))
-								return result;
-						}
-					}
-				}
-			}
-			pclose(fp);
-
-			return string();
-		#endif
-	}
-	
 	string SocketAddress::ToString() const
 	{
 		return GetIp() + ":" + GetPort();
