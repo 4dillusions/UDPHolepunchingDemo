@@ -1,10 +1,8 @@
-cmake_minimum_required(VERSION 3.20)
+project(Framework)
 
-project(Framework CXX)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-include_directories(Framework PRIVATE Source/${CMAKE_SYSTEM_NAME})
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+	set(WIN_LIBS ws2_32)
+endif()
 
 add_library(Framework
     Source/IpV4Address.cpp
@@ -21,3 +19,6 @@ add_library(Framework
     Source/UDPSocket.cpp
     Source/${CMAKE_SYSTEM_NAME}/UDPSocketPlatform.cpp
     Source/UDPSocket.h)
+
+target_include_directories(Framework PUBLIC Source)
+target_include_directories(Framework PUBLIC Source/${CMAKE_SYSTEM_NAME})
