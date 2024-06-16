@@ -3,6 +3,7 @@ html/
 .history/
 .metadata/
 .vs/
+.vscode/
 obj/
 Debug/
 Release/

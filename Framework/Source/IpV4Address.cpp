@@ -13,7 +13,7 @@ namespace Network
 	IpV4Address::IpV4Address(int addr1, int addr2, int addr3, int addr4) : addr1{ addr1 }, addr2{ addr2 }, addr3{ addr3 }, addr4{ addr4 }
 	{ }
 	
-	IpV4Address::IpV4Address(string& ipAddress)
+	IpV4Address::IpV4Address(const string& ipAddress)
 	{
 		auto address = SplitString(ipAddress, '.');
 		addr1 = addr2 = addr3 = addr4 = 0;
