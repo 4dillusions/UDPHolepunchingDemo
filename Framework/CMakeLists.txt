@@ -20,5 +20,7 @@ add_library(Framework
     Source/${CMAKE_SYSTEM_NAME}/UDPSocketPlatform.cpp
     Source/UDPSocket.h)
 
+target_link_libraries(Framework PRIVATE ${WIN_LIBS})
+
 target_include_directories(Framework PUBLIC Source)
 target_include_directories(Framework PUBLIC Source/${CMAKE_SYSTEM_NAME})
