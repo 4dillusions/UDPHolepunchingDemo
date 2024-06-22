@@ -1,3 +1,3 @@
 project(Server)
 add_executable(Server Source/Main.cpp)
-target_link_libraries(Server PRIVATE Framework ${WIN_LIBS})
+target_link_libraries(Server PRIVATE Framework)
