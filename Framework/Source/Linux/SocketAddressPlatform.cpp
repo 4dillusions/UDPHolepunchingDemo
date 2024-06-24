@@ -13,29 +13,21 @@ namespace Network
 	{
 		setenv("LANG", "C", 1);
 
-		FILE* fp = popen("ip -f inet addr show", "r");
+		FILE* fp = popen("ip -f inet addr show | grep -w 'inet' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1", "r");
 		if (fp)
 		{
-			char* ip = nullptr, * delimiter;
+			char* ip = nullptr;
 			size_t count;
-			while ((getline(&ip, &count, fp) > 0) && ip)
-			{
-				if ((ip = strstr(ip, "inet ")))
-				{
-					ip += 5;
-					if ((delimiter = strchr(ip, '/')))
-					{
-						*delimiter = '\0';
+			getline(&ip, &count, fp);
+			string result(ip);
 
-						string result(ip);
-						if (result != string("127.0.0.1"))
-							return result;
-					}
-				}
-			}
+			if (!result.empty() && result.back() == '\n')
+				result.pop_back();
+
+			return result;
 		}
 		pclose(fp);
-		
+
 		return string();
 	}
 }
