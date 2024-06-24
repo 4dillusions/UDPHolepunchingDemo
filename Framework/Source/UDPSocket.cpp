@@ -30,7 +30,7 @@ namespace Network
 
 	void UDPSocket::Bind(SocketAddress& toAddress) const
 	{
-		if (bind(udpSocket, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in)) == SOCKET_ERROR)
+		if (::bind(udpSocket, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in)) == SOCKET_ERROR)
 			cout << "[ERROR] Can't bind UDP socket!\n";
 		else
 			cout << "OK - bind UDP socket\n";
