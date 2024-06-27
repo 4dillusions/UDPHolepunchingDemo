@@ -5,11 +5,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "catch2/catch.hpp"
-#include "NetworkSystem.h"
-#include "SocketAddress.h"
-#include "IpV4Address.h"
-#include "Net.h"
-#include "UDPSocket.h"
+#include "Framework/NetworkSystem.h"
+#include "Framework/SocketAddress.h"
+#include "Framework/IpV4Address.h"
+#include "Framework/Net.h"
+#include "Framework/UDPSocket.h"
 
 using namespace Network;
 

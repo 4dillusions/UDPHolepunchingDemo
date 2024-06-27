@@ -4,12 +4,12 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "NetworkSystem.h"
-#include "Net.h"
-#include "UDPSocket.h"
-#include "SocketAddress.h"
-#include "MessageHelper.h"
-#include "IpV4Address.h"
+#include "Framework/NetworkSystem.h"
+#include "Framework/Net.h"
+#include "Framework/UDPSocket.h"
+#include "Framework/SocketAddress.h"
+#include "Framework/MessageHelper.h"
+#include "Framework/IpV4Address.h"
 
 #include <thread>
 

@@ -5,7 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "catch2/catch.hpp"
-#include "NetworkSystem.h"
+#include "Framework/NetworkSystem.h"
 
 TEST_CASE("NetworkSystemTest", "[Network::NetworkSystem]")
 {

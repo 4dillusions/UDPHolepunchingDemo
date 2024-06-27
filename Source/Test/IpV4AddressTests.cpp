@@ -5,7 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "catch2/catch.hpp"
-#include "IpV4Address.h"
+#include "Framework/IpV4Address.h"
 
 using namespace Network;
 
