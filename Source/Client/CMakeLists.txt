@@ -1,3 +1,3 @@
 project(Client)
-add_executable(Client Main.cpp)
-target_link_libraries(Client PRIVATE Framework)
+add_executable(${PROJECT_NAME} Main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE Framework)

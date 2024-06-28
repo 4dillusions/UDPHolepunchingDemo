@@ -4,7 +4,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
 	set(WIN_LIBS ws2_32)
 endif()
 
-add_library(Framework
+add_library(${PROJECT_NAME}
     IpV4Address.cpp
     IpV4Address.h
     MessageHelper.cpp
@@ -20,7 +20,7 @@ add_library(Framework
     ${CMAKE_SYSTEM_NAME}/UDPSocketPlatform.cpp
     UDPSocket.h)
 
-target_link_libraries(Framework PRIVATE ${WIN_LIBS})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${WIN_LIBS})
 
-target_include_directories(Framework PUBLIC ..)
-target_include_directories(Framework PUBLIC ../Framework/${CMAKE_SYSTEM_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC ..)
+target_include_directories(${PROJECT_NAME} PUBLIC ../${PROJECT_NAME}/${CMAKE_SYSTEM_NAME})
