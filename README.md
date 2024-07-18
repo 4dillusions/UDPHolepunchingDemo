@@ -38,11 +38,16 @@ Instal, build and run
 <ul>
     <li>
         Install dev environment: 
-        <pre><code class="language-bash">sudo apt update<br>sudo apt install build-essential cmake</code></pre>
+        <pre><code class="language-bash">sudo apt update
+sudo apt install build-essential cmake</code></pre>
     </li>
     <li>
         Build project:
-        <pre><code class="language-bash">cd UDPHolepunchingDemo<br>mkdir build<br>cd build<br>cmake ..<br>cmake --build .</code></pre>
+        <pre><code class="language-bash">cd UDPHolepunchingDemo
+mkdir build
+cd build
+cmake ..
+cmake --build .</code></pre>
         Run (server for example):
         <pre><code class="language-bash">./Bin/Server</code></pre>
     </li>
@@ -52,11 +57,17 @@ Instal, build and run
 <ul>
     <li>
         Install dev environment: 
-        <pre><code class="language-bash">xcode-select --install<br>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br>brew install cmake</code></pre>
+        <pre><code class="language-bash">xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install cmake</code></pre>
     </li>
     <li>
         Build project:
-        <pre><code class="language-bash">cd UDPHolepunchingDemo<br>mkdir build<br>cd build<br>cmake ..<br>cmake --build .</code></pre>
+        <pre><code class="language-bash">cd UDPHolepunchingDemo
+mkdir build
+cd build
+cmake ..
+cmake --build .</code></pre>
         Run (server for example):
         <pre><code class="language-bash">./Bin/Server</code></pre>
     </li>
