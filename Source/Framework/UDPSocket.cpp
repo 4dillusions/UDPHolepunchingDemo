@@ -69,6 +69,8 @@ namespace Network
 			ip.addr4 = ipAddr4;
 			SocketAddress address(port, ip);
 			result = SendTo(message, messageLenght, address);
+			if (result < 0)
+            	std::cerr << "SendTo failed for IP: " << ipStr << " Error: " << strerror(errno) << std::endl;
 		}
 
 		return result;

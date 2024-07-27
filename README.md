@@ -3,6 +3,7 @@ UDP Holepunching demo
 <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> 
 <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0"><br>
 <img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus">
+[![Azure Static Web Apps CI/CD](https://github.com/libs4di/UDPHolepunchingDemo/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/libs4di/UDPHolepunchingDemo/action/workflows/cmake-multi-platform.yml)
 ========================================================================================================
 [![Alt text](https://img.youtube.com/vi/XKSSozKlYJM/0.jpg)](https://www.youtube.com/watch?v=XKSSozKlYJM)
 
@@ -82,3 +83,7 @@ How to use it
     <li>The server send IPs for clients</li>
     <li>Two clients communicate each other</li>
 </ul>
+
+TODO
+----
+The GitHub Action currently does not run the UDPSocketTest on the macOS platform because it fails due to a permission error in the virtual environment (it works fine on a real macOS machine). I may fix this solution later.
