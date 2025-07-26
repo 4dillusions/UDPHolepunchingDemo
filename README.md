@@ -5,8 +5,6 @@ UDP Holepunching demo
 <img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus">
 [![Azure Static Web Apps CI/CD](https://github.com/4dillusions/UDPHolepunchingDemo/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/4dillusions/UDPHolepunchingDemo/action/workflows/cmake-multi-platform.yml)
 ========================================================================================================
-[![Alt text](https://img.youtube.com/vi/XKSSozKlYJM/0.jpg)](https://www.youtube.com/watch?v=XKSSozKlYJM)
-
 Its a P2P UDP communication demo uses hole punching technology written in C++. It's working between remote machines behind the NAT or something like this. You need an address/port "share" server with public IP (there are free VPS machines, for example Google VPS) for hole punching.
 
 How can it work?
