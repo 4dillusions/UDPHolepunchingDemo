@@ -35,7 +35,7 @@ TEST_CASE("SocketAddressTests", "[Network::SocketAddress]")
 	SECTION("GetHostIpTest")
 	{
 		Net::Init();
-		REQUIRE(SocketAddress::GetPublicIpFromHostName("4dillusions.com") == string("77.111.127.98"));
+		REQUIRE(SocketAddress::GetPublicIpFromHostName("4dillusions.com") == string("77.111.127.101"));
 
 		const auto LocalIp = SocketAddress::GetLocalIp();
 		REQUIRE(LocalIp != string(""));
