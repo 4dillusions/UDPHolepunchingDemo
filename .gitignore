@@ -4,6 +4,7 @@ html/
 .metadata/
 .vs/
 .vscode/
+.idea/
 obj/
 Debug/
 Release/

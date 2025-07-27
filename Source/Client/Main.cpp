@@ -36,7 +36,7 @@ void StunClient()
 	{
 		MessageHelper::SendToRemoteMachine(socket, remoteMachineAddress, "Hello friend client! " + std::to_string(i));
 		MessageHelper::ReceiveFromRemoteMachine(socket);
-		std::this_thread::sleep_for(1s);
+		std::this_thread::sleep_for(std::chrono::seconds(1)); //std::this_thread::sleep_for(1s);
 	}
 
 	delete socket;
@@ -67,7 +67,7 @@ void UDPReceiver()
 			cout << "sender message: " << string(messageByteBuffer) << endl;
 		}
 
-		std::this_thread::sleep_for(1s);
+		std::this_thread::sleep_for(std::chrono::seconds(1)); //std::this_thread::sleep_for(1s);
 	}
 
 	delete receiverSocket;
